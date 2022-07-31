@@ -6,6 +6,7 @@ import time
 import firebase_admin
 from firebase_admin import db
 from requests import get
+import sys
 
 ip = get('https://api.ipify.org').text
 
@@ -103,5 +104,6 @@ try:
         threading.Thread(target=serve_client, args=(addr, client_socket)).start()
         time.sleep(0.1)
         out_log("Total Clients:", threading.active_count()-2)
-except Exception as e:
-    out_log(str(e))
+except:
+    out_log("Unexpected error:", sys.exc_info()[0])
+    print("Unexpected error:", sys.exc_info()[0])
