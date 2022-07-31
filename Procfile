@@ -1,1 +1,1 @@
-worker: python Cache_Server.py
+web: python Cache_Server.py
